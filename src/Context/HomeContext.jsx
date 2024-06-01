@@ -2,7 +2,8 @@
 // eslint-disable-next-line no-unused-vars
 import React ,{ createContext, useState } from 'react';
 import all_product from "../Components/Assets/all_product";
-import Item from '../Components/Items/Item';
+
+
 
 
 
@@ -20,20 +21,26 @@ const HomeContextProvider = (props)=>{
   
     const addToCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+        console.log(cartItems);
     }
       
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
+
+    // const getTotalAmount =()=>{
+    //     setCartItems((prev)=>)
+    // }
     const contextValue = {all_product,cartItems,addToCart,removeFromCart}
 
     return(
         <HomeContext.Provider value = {contextValue}>
         {props.children}
-
+   
 
 
             </HomeContext.Provider>
+            
     )
 }
 
