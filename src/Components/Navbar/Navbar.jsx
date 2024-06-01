@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Navbar.css';
 import logo from '../Assets/logo.png'
 import cart from '../Assets/cart_icon.png'
 import { Link } from 'react-router-dom';
+import { HomeContext } from '../../Context/HomeContext';
 const Navbar = () => {
 
     const [menu,setMenu] = useState("home")
+    const {getTotalCartItems} = useContext(HomeContext)
   return (
     <>
     <div className='navbar'>
@@ -25,7 +27,7 @@ const Navbar = () => {
     <button><Link to="/login" >Login</Link></button>
     <Link to="/cart"><img src={cart} alt="" /> </Link>
     <div className='nav-cart-count'>
-     0
+     {getTotalCartItems()}
     </div>
    </div>
         
